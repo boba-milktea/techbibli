@@ -1,26 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import Home from "./pages/Home"
-import About from "./pages/About"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+// layouts
+
+import Layout from "./components/Layout";
+
+// pages
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Books from "./pages/Books/Books";
+import BookDetail from "./pages/Books/BookDetail";
 
 function App() {
   return (
     <BrowserRouter>
-      <header>
-        <Link className="site-logo" to="/">#VanLife</Link>
-        <nav>
-          <Link to="/about">About</Link>
-        </nav>
-      </header>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+
+          <Route path="/books" element={<Books />} />
+          <Route path="/books/:id" element={<BookDetail />} />
+        </Route>
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-ReactDOM
-  .createRoot(document.getElementById('root'))
-  .render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);

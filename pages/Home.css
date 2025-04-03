@@ -1,0 +1,67 @@
+/*** HOME PAGE ***/
+.home-container {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./assets/images/image-hero.png") no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  color: var(--white-text);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 5em 2em;
+}
+
+.home-container h1 {
+  font-weight: 700;
+  font-size: clamp(2rem, 3vw, 4rem);
+  line-height: 1em;
+}
+
+.home-container p {
+  line-height: 1.5em;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+}
+
+.home-container a {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--secondary-bk);
+  border: none;
+  width: 100%;
+  margin-top: 1.68em;
+  padding-block: 0.75rem;
+  color: var(--white-text);
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+}
+
+.home-container a:hover {
+  transform: translate(1px, 1px);
+}
+
+/* Large Devices (Laptops, Small Desktops) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .home-container {
+    height: 80%;
+    padding: 8em 5em;
+  }
+}
+
+/* Extra Large Devices (Large Desktops, 4K Screens) */
+@media (min-width: 1200px) {
+  .home-container {
+    height: 80%;
+    padding: 10em 20em;
+  }
+
+  .home-container a {
+    padding-block: 1em;
+    max-width: 60%;
+  }
+}

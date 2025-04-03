@@ -1,12 +1,17 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React from "react";
+import "./Home.css";
+import { Link } from "react-router-dom";
 
 export default function Home() {
-    return (
-        <div className="home-container">
-            <h1>You got the travel plans, we got the travel vans.</h1>
-            <p>Add adventure to your life by joining the #vanlife movement. Rent the perfect van to make your perfect road trip.</p>
-            <Link to="vans">Find your van</Link>
-        </div>
-    )
-};
+  return (
+    <div className="home-container">
+      <h1>Codex of Tomorrow</h1>
+      <p>
+        Knowledge shapes our minds, and books are the spells that weave
+        intelligence across time. Each page holds the power to spark innovation,
+        guiding us to a future yet unwritten...
+      </p>
+      <Link to="vans">Find your magic wand</Link>
+    </div>
+  );
+}

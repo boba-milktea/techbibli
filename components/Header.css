@@ -1,0 +1,29 @@
+/*** HEADER ***/
+
+header {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  padding-block: 10px;
+}
+
+header .site-logo {
+  font-family: "Boldonse", system-ui;
+  letter-spacing: 0.1em;
+  color: var(--primary-text);
+  margin-right: auto;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+}
+
+header a {
+  text-decoration: none;
+  color: var(--gray-text);
+  font-weight: 600;
+  padding: 0.3em 1.25em;
+}
+
+header a:hover {
+  color: var(--secondary-text);
+  text-decoration: underline;
+}

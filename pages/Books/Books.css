@@ -1,0 +1,35 @@
+.container {
+  padding-inline: 1.4em;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 2.15em;
+  margin-top: 3.56em;
+}
+
+.book-card a {
+  color: #161616;
+  text-decoration: none;
+}
+
+.book-card img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+/* Large Devices (Laptops, Small Desktops) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .book-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Extra Large Devices (Large Desktops, 4K Screens) */
+@media (min-width: 1200px) {
+  .book-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

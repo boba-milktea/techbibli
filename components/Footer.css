@@ -1,0 +1,12 @@
+Footer {
+  background-color: #252525;
+  color: #aaaaaa;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  width: 100%;
+  height: 75px;
+  justify-self: end;
+}
