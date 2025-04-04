@@ -1,7 +1,3 @@
-.container {
-  padding-inline: 1.4em;
-}
-
 .book-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -18,6 +14,21 @@
 .book-card img {
   max-width: 100%;
   border-radius: 5px;
+}
+
+.book-list-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2em;
+}
+
+.book-category-btn {
+  width: fit-content;
+  font-size: 1em;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* Large Devices (Laptops, Small Desktops) */

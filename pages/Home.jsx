@@ -11,7 +11,7 @@ export default function Home() {
         intelligence across time. Each page holds the power to spark innovation,
         guiding us to a future yet unwritten...
       </p>
-      <Link to="vans">Find your magic wand</Link>
+      <Link to="./books">Find your magic wand</Link>
     </div>
   );
 }

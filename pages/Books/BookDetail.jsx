@@ -25,6 +25,14 @@ const BookDetail = () => {
     loadBook();
   }, [id]);
 
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1>There was an error: {error}</h1>;
+  }
+
   return (
     <div className="book-container">
       {book && (
@@ -33,11 +41,11 @@ const BookDetail = () => {
           <div className="book-detail">
             <h3>{book.title}</h3>
             <p>
-              <span class="bold">Author: </span>
+              <span className="bold">Author: </span>
               {book.author}
             </p>
             <p>
-              <span class="bold">Published Year: </span>
+              <span className="bold">Published Year: </span>
               {book.publishedYear}
             </p>
             <p>{book.description}</p>
