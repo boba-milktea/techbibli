@@ -1,5 +1,5 @@
 import React from "react";
-import aboutHero from "../assets/images/about-hero.png";
+import aboutHero from "/assets/about-hero.png";
 import "./About.css";
 import { Link } from "react-router-dom";
 
