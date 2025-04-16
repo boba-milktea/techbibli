@@ -20,23 +20,6 @@ header .site-logo {
   font-size: 1.3rem;
 }
 
-header a {
-  text-decoration: none;
-  color: var(--gray-text);
-  font-weight: 600;
-  padding: 0.3em 0.8em;
-}
-
-header a:hover {
-  color: var(--secondary-text);
-  text-decoration: underline;
-}
-
-header .active {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
 header .user-name {
   position: absolute;
   top: -1em;

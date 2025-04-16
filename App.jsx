@@ -12,7 +12,7 @@ import Books from "./src/pages/Books/Books";
 import BookDetail from "./src/pages/Books/BookDetail";
 import CodexLayout from "./src/components/CodexLayout";
 import Codex from "./src/pages/Codex/Codex";
-import CodexResource from "./src/pages/Codex/CodexResource";
+import CodexDetail from "./src/pages/Codex/CodexDetail";
 import Discussion from "./src/pages/Codex/Discussion";
 import Login from "./src/pages/Auth/Login";
 import Signup from "./src/pages/Auth/Signup";
@@ -33,13 +33,13 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="logout" element={<Logout />} />
 
-          <Route element={<AuthProtected />}>
-            <Route path="codex" element={<CodexLayout />}>
-              <Route index element={<Codex />} />
-              <Route path="codex/:id" element={<CodexResource />} />
-              <Route path="discussion" element={<Discussion />} />
-            </Route>
+          {/* <Route element={<AuthProtected />}> */}
+          <Route path="codex" element={<CodexLayout />}>
+            <Route index element={<Codex />} />
+            <Route path=":id" element={<CodexDetail />} />
+            <Route path="discussion" element={<Discussion />} />
           </Route>
+          {/* </Route> */}
         </Route>
       </Routes>
     </BrowserRouter>

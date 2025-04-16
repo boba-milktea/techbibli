@@ -42,6 +42,23 @@ nav {
   display: flex;
 }
 
+a {
+  text-decoration: none;
+  color: var(--gray-text);
+  font-weight: 600;
+  padding: 0.3em 0.8em;
+}
+
+a:hover {
+  color: var(--secondary-text);
+  text-decoration: underline;
+}
+
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .site-wrapper {
   min-height: 100vh;
   display: flex;
