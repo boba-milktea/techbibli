@@ -7,6 +7,7 @@ import {
   getDoc,
   doc,
 } from "firebase/firestore/lite";
+import { getDownloadURL, getStorage, ref } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDqpFshlEpZFtKQO3JFYvlc2CrSwsgFTyM",
@@ -24,7 +25,9 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 const bookCollectionRef = collection(db, "books");
+const codexCollectionRef = collection(db, "codex");
 
+// get books and each book
 export async function getBooks() {
   const snapshot = await getDocs(bookCollectionRef); // will get the books from the location. But the format is different
 
@@ -42,8 +45,29 @@ export async function getBook(id) {
   return book;
 }
 
+// get codex and each codex pdf
+export async function getCodex() {
+  const snapshot = await getDocs(codexCollectionRef);
+
+  const codex = snapshot.docs.map((doc) => ({
+    ...doc.data(),
+    id: doc.id,
+  }));
+  return codex;
+}
+
+export async function getCodexDetail(id) {
+  const docRef = doc(db, "codex", id);
+  const snapshot = await getDoc(docRef);
+  const book = { ...snapshot.data(), id: snapshot.id };
+  return book;
+}
+
+// firebase auth
+
 export { auth };
-// get books download url
+
+//get books download url
 
 //   const handleGetBooks = () => {
 //     const storage = getStorage();
@@ -57,3 +81,15 @@ export { auth };
 //         console.error(error);
 //       });
 //   };
+// export const handleGetCodex = () => {
+//   const storage = getStorage();
+//   const pdfRef = ref(storage, "codex-pdfs/mysql.pdf");
+
+//   getDownloadURL(pdfRef)
+//     .then((url) => {
+//       console.log(url);
+//     })
+//     .catch((err) => console.error(err));
+// };
+
+// handleGetCodex();

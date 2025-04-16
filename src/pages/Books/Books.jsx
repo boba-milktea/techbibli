@@ -1,17 +1,15 @@
 import React from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import extractCategory from "../../utils/extractCategory";
+import { Link } from "react-router-dom";
 import normalisation from "../../utils/normalisation";
 import { getBooks } from "../../../api";
+import useCategoryFilter from "../../hooks/useCategoryFilter";
 import "./Books.css";
 
 const Books = () => {
   const [books, setBooks] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const categoryFilter = searchParams.get("category");
+  const { displayedBooks, categories, handleFilter } = useCategoryFilter(books);
 
   // fetch the books
   React.useEffect(() => {
@@ -29,15 +27,8 @@ const Books = () => {
     loadBooks();
   }, []);
 
-  // filter the books by category
-  const displayedBook = categoryFilter
-    ? books.filter((book) =>
-        normalisation(book.category).includes(categoryFilter)
-      )
-    : books;
-
   // create book dom elements
-  const bookElements = displayedBook.map((book) => {
+  const bookElements = displayedBooks.map((book) => {
     return (
       <div key={book.id} className="book-card">
         <Link to={book.id}>
@@ -59,20 +50,8 @@ const Books = () => {
     );
   });
 
-  // handle filter query
-  const handleFilter = (key, value) => {
-    setSearchParams((prevParams) => {
-      if (value === null) {
-        prevParams.delete(key);
-      } else {
-        prevParams.set(key, normalisation(value));
-      }
-      return prevParams;
-    });
-  };
-
   // create filter link elements
-  const categoryLinkElements = extractCategory(books).map((category) => (
+  const categoryLinkElements = categories.map((category) => (
     <button
       key={category}
       className="book-category-btn"
@@ -84,13 +63,9 @@ const Books = () => {
     </button>
   ));
 
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
+  if (loading) return <h1>Loading...</h1>;
 
-  if (error) {
-    return <h1>There was an error: {error}</h1>;
-  }
+  if (error) return <h1>There was an error: {error}</h1>;
 
   return (
     <div className="container">

@@ -7,8 +7,8 @@ const CodexLayout = () => {
       <nav>
         <NavLink to=".">Collection</NavLink>
         <NavLink to="discussion">Discussion</NavLink>
-        <Outlet />
       </nav>
+      <Outlet />
     </>
   );
 };
