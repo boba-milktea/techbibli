@@ -1,12 +1,13 @@
 Footer {
   background-color: #252525;
   color: #aaaaaa;
-  font-size: 14px;
+  font-size: 1.2em;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 500;
   width: 100%;
-  height: 75px;
+  height: 4.2em;
   justify-self: end;
+  margin-top: auto;
 }

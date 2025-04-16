@@ -1,0 +1,67 @@
+/*** HEADER ***/
+
+header {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  padding-block: 10px;
+}
+
+header nav {
+  position: relative;
+}
+
+header .site-logo {
+  font-family: "Boldonse", system-ui;
+  letter-spacing: 0.1em;
+  color: var(--primary-text);
+  margin-right: auto;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+}
+
+header a {
+  text-decoration: none;
+  color: var(--gray-text);
+  font-weight: 600;
+  padding: 0.3em 0.8em;
+}
+
+header a:hover {
+  color: var(--secondary-text);
+  text-decoration: underline;
+}
+
+header .active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+header .user-name {
+  position: absolute;
+  top: -1em;
+  right: 0.8em;
+}
+
+/* Large Devices (Laptops, Small Desktops) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  header a {
+    font-size: 1.25em;
+    padding: 0.3em 1.2em;
+  }
+  header .user-name {
+    right: 1.5em;
+  }
+}
+
+/* Extra Large Devices (Large Desktops, 4K Screens) */
+@media (min-width: 1200px) {
+  header a {
+    font-size: 1.3em;
+    padding: 0.3em 1.5em;
+  }
+
+  header .user-name {
+    right: 2em;
+  }
+}

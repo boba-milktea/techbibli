@@ -10,6 +10,7 @@
   --secondary-text: #252525;
   --gray-text: #4d4d4d;
   --white-text: #fff;
+  --error-text: #be3d2a;
 }
 
 html,
@@ -20,12 +21,7 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
-
 body {
-  -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
@@ -40,6 +36,20 @@ p {
 /*** book container ***/
 .container {
   padding-inline: 1.4em;
+}
+
+nav {
+  display: flex;
+}
+
+.site-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  color: var(--error-text);
 }
 
 /*** Not sure if necssary, main-content in Layout ***/

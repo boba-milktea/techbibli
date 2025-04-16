@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { getBooks } from "../../api";
 import extractCategory from "../../utils/extractCategory";
 import normalisation from "../../utils/normalisation";
+import { getBooks } from "../../../api";
 import "./Books.css";
 
 const Books = () => {
