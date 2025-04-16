@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { getBook } from "../../api";
+import { getBook } from "../../../api";
 import "./BookDetail.css";
 
 const BookDetail = () => {
