@@ -4,3 +4,16 @@
   flex-direction: column;
   align-items: center;
 }
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .right-side iframe {
+    margin-top: 8em;
+  }
+}
+
+/* Extra Large Devices (Large Desktops, 4K Screens) */
+@media (min-width: 1200px) {
+  .right-side iframe {
+    margin-top: 8em;
+  }
+}

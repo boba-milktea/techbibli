@@ -1,6 +1,8 @@
 import useAddRemoveReview from "../hooks/useAddRemoveReview";
-import "./ReviewList.css";
 import useAuthContext from "../hooks/useAuthContext";
+import Rating from "./Rating";
+import { MdOutlineDeleteForever } from "react-icons/md";
+import "./ReviewList.css";
 
 const ReviewList = ({ reviewList }) => {
   const { user } = useAuthContext();
@@ -12,23 +14,27 @@ const ReviewList = ({ reviewList }) => {
 
   const reviewElements = reviewList.map((review) => {
     return (
-      <div key={review.id}>
+      <div className="review-card" key={review.id}>
         <p>
           <span className="bold">User: </span>
           {review.userName}
         </p>
         <p>
           <span className="bold">Rating: </span>
-          {review.rating}
+          <Rating userRating={review.rating} readOnly={true} />
         </p>
         <p>
           <span className="bold">Comment: </span>
           {review.comment}
         </p>
         {user.displayName === review.userName && (
-          <button onClick={() => deleteReview(review.id)}>X</button>
+          <MdOutlineDeleteForever
+            className="delete-btn"
+            onClick={() => deleteReview(review.id)}
+          >
+            X
+          </MdOutlineDeleteForever>
         )}
-        <hr />
       </div>
     );
   });

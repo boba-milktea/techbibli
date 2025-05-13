@@ -2,6 +2,8 @@ import React from "react";
 import "./Signup.css";
 import { useAuth } from "../../hooks/useAuth";
 
+// rewrite the signup form submit!
+
 const Signup = () => {
   const { signup, isPending, error } = useAuth();
   const [userName, setUserName] = React.useState("");

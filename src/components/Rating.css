@@ -1,0 +1,26 @@
+.review .star {
+  font-size: 3rem;
+  transition: all 50ms ease-in-out;
+}
+
+.review .star:hover {
+  transform: scale(1.2);
+}
+
+.review input[type="radio"] {
+  position: absolute;
+  border: none;
+  right: 0.5em;
+  top: 0.6em;
+  transform: scale(2);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.review .star.readonly:hover {
+  transform: none;
+}
+
+.review .star.readonly {
+  font-size: 2rem;
+}

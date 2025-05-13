@@ -1,4 +1,5 @@
 .review {
+  margin-top: 1em;
   width: 100%;
   max-width: 450px;
   display: flex;
@@ -23,35 +24,22 @@ form .comment {
   flex-direction: column;
 }
 
+form .comment label {
+  font-size: 1.3rem;
+  margin-top: 1em;
+}
+
 textarea {
   margin-top: 1em;
   height: 250px;
   width: 100%;
   resize: none;
   font-family: "Inter", sans-serif;
-}
-
-.star {
-  font-size: 2rem;
-  transition: all 200ms ease-in-out;
-}
-
-.star:hover {
-  transform: scale(1.2);
+  font-size: 1.2rem;
 }
 
 .review label {
   position: relative;
-}
-
-.review input[type="radio"] {
-  position: absolute;
-  border: none;
-  right: 0.5em;
-  top: 0.6em;
-  transform: scale(2.5);
-  opacity: 0;
-  cursor: pointer;
 }
 
 .send-btn {

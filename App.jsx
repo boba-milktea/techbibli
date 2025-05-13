@@ -13,7 +13,6 @@ import BookDetail from "./src/pages/Books/BookDetail";
 import CodexLayout from "./src/components/CodexLayout";
 import Codex from "./src/pages/Codex/Codex";
 import CodexDetail from "./src/pages/Codex/CodexDetail";
-import Discussion from "./src/pages/Codex/Discussion";
 import Login from "./src/pages/Auth/Login";
 import Signup from "./src/pages/Auth/Signup";
 import Logout from "./src/pages/Auth/Logout";
@@ -33,13 +32,12 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="logout" element={<Logout />} />
 
-          {/* <Route element={<AuthProtected />}> */}
-          <Route path="codex" element={<CodexLayout />}>
-            <Route index element={<Codex />} />
-            <Route path=":id" element={<CodexDetail />} />
-            <Route path="discussion" element={<Discussion />} />
+          <Route element={<AuthProtected />}>
+            <Route path="codex" element={<CodexLayout />}>
+              <Route index element={<Codex />} />
+              <Route path=":id" element={<CodexDetail />} />
+            </Route>
           </Route>
-          {/* </Route> */}
         </Route>
       </Routes>
     </BrowserRouter>

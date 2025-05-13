@@ -10,6 +10,24 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import useAuthContext from "./useAuthContext";
 
+/**
+ * Custom React hook for Firebase authentication actions: sign up, sign in or sign out.
+ *
+ * @returns {{
+ *   signup:  (userName: string, email: string, password: string) => Promise<void>,
+ *   login: ( email: string, password: string) => Promise<void>,
+ *   logout: () Promise<void>,
+ *  isPending: Boolean ,
+ *  error: string || null
+ * }} An object containing:
+ * - `signup`: A asynchronously function that uses firebase createUserWithEmailAndPassword to create a user; takes a username, an email and a password.
+ * - `login`: A asynchronously function  that uses firebase signInWithEmailAndPassword to sign a user in; takes an email and a password.
+ * - `logout`:A asynchronously function  that uses firebase signOut to sign a user out
+ * - `isPending`: Indicates whether an authentication request is in progress.
+ * - `error`: an error text if the authentication action falls, or `null` if no error occured.
+ *
+ */
+
 export const useAuth = () => {
   const [error, setError] = React.useState(null);
   const [isPending, setIsPending] = React.useState(false);
@@ -17,8 +35,9 @@ export const useAuth = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const path = location.state?.from?.pathname || "/codex";
+  const path = location.state?.from?.pathname || "/";
 
+  // signup using firebase authentication
   const signup = async (userName, email, password) => {
     setError(null);
     setIsPending(true);
@@ -34,13 +53,19 @@ export const useAuth = () => {
       await updateProfile(auth.currentUser, { displayName: userName });
       setIsPending(false);
       setError(null);
+
+      // after login, redirect to the previous page or the home page.
+      // clear the page stack using replace prop
+
+      navigate(path, { replace: true });
     } catch (err) {
-      console.log(err.message);
+      console.error(err.message);
       setError(err.message);
       setIsPending(false);
     }
   };
 
+  // login using firebase authentication - sign in with email and password
   const login = async (email, password) => {
     setError(null);
     setIsPending(true);
@@ -51,14 +76,15 @@ export const useAuth = () => {
       setIsPending(false);
       setError(null);
 
-      // after login, redirect to the codex page, clear the page stack using replace prop
+      // after login, redirect to the previous page or the home page.
+      // clear the page stack using replace prop
       navigate(path, { replace: true });
     } catch (err) {
       setError(err.message.replace("Firebase:", "Message:"));
       setIsPending(false);
     }
   };
-
+  // logout using firebase authentication
   const logout = async () => {
     setError(null);
     setIsPending(true);
