@@ -6,7 +6,8 @@ import {
   getDocs,
   getDoc,
   doc,
-} from "firebase/firestore/lite";
+  Timestamp,
+} from "firebase/firestore";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 
 const firebaseConfig = {
@@ -23,6 +24,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+
+const timestamp = Timestamp;
 
 const bookCollectionRef = collection(db, "books");
 const codexCollectionRef = collection(db, "codex");
@@ -65,7 +68,7 @@ export async function getCodexDetail(id) {
 
 // firebase auth
 
-export { auth };
+export { db, auth, timestamp };
 
 //get books download url
 

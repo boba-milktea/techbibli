@@ -27,8 +27,8 @@ export const AuthContextProvider = ({ children }) => {
   React.useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
       dispatch({ type: "AUTH", payload: user });
-      unsub();
     });
+    return () => unsub();
   }, []);
 
   return (

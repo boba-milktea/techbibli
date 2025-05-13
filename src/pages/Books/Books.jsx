@@ -1,31 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import normalisation from "../../utils/normalisation";
-import { getBooks } from "../../../api";
+// import useCollection from "../../hooks/useCollection";
 import useCategoryFilter from "../../hooks/useCategoryFilter";
+import useCollectionData from "../../hooks/useCollectionData";
 import "./Books.css";
 
 const Books = () => {
-  const [books, setBooks] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
+  const { error, loading, data: books } = useCollectionData("books");
   const { displayedBooks, categories, handleFilter } = useCategoryFilter(books);
-
-  // fetch the books
-  React.useEffect(() => {
-    async function loadBooks() {
-      setLoading(true);
-      try {
-        const bookData = await getBooks();
-        setBooks(bookData);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadBooks();
-  }, []);
 
   // create book dom elements
   const bookElements = displayedBooks.map((book) => {
