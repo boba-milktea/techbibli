@@ -1,30 +1,13 @@
 import React from "react";
 import "./Codex.css";
 import { Link } from "react-router-dom";
-import { getCodex } from "../../../api";
 import useCategoryFilter from "../../hooks/useCategoryFilter";
+import useCollectionData from "../../hooks/useCollectionData";
 
 const Codex = () => {
-  const [codex, setCodex] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
+  const { data: codex, error, loading } = useCollectionData("codex");
 
   const { displayedBooks, handleFilter, categories } = useCategoryFilter(codex);
-
-  React.useEffect(() => {
-    async function loadCodex() {
-      setLoading(true);
-      try {
-        const codexData = await getCodex();
-        setCodex(codexData);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadCodex();
-  }, []);
 
   const categoryLinkElements = categories.map((category) => (
     <button

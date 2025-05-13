@@ -1,29 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { getBook } from "../../../api";
 import "./BookDetail.css";
+import useCollectionData from "../../hooks/useCollectionData";
 
 const BookDetail = () => {
-  const [book, setBook] = React.useState();
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
-
   const { id } = useParams();
-
-  React.useEffect(() => {
-    async function loadBook() {
-      setLoading(true);
-      try {
-        const bookData = await getBook(id);
-        setBook(bookData);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadBook();
-  }, [id]);
+  const { data: book, error, loading } = useCollectionData("books", id);
 
   if (loading) {
     return <h1>Loading...</h1>;

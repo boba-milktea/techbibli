@@ -1,37 +1,14 @@
-//resource - https://goalkicker.com/TypeScriptBook2/
-import React from "react";
 import { useParams } from "react-router-dom";
-import { getCodexDetail } from "../../../api";
+import Review from "../../components/Review";
 import "./CodexDetail.css";
-
-/*
-use react-pdf https://medium.com/@9haroon_dev/best-4-methods-to-build-a-pdf-viewer-in-react-js-pdf-js-react-pdf-and-more-2024-guide-6f5f658d30cf
- */
+import useAuthContext from "../../hooks/useAuthContext";
+import useCollectionData from "../../hooks/useCollectionData";
 
 const CodexDetail = () => {
-  const [note, setNote] = React.useState();
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
-
+  const { user } = useAuthContext();
   const { id } = useParams();
-
-  React.useEffect(() => {
-    async function loadNote() {
-      setLoading(true);
-      try {
-        const codexData = await getCodexDetail(id);
-        setNote(codexData);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadNote();
-  }, [id]);
-
-  console.log(note);
-
+  const { data: note, error, loading } = useCollectionData("codex", id);
+  const userName = user?.displayName;
   if (error) return <h1>There was an error: ${error}</h1>;
   if (loading) return <h1>Loading...</h1>;
 
@@ -41,9 +18,13 @@ const CodexDetail = () => {
         <>
           <div className="book-detail">
             <h2>{note.title}</h2>
+            <img src={note.imageUrl} alt={note.title} />
             <p>{note.description}</p>
           </div>
-          <iframe src={note.pdfUrl} width="100%" height="650px"></iframe>
+          <div className="right-side">
+            <iframe src={note.pdfUrl} width="100%" height="800px"></iframe>
+            {userName && <Review userName={user.displayName} codexId={id} />}
+          </div>
         </>
       )}
     </div>

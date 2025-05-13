@@ -8,6 +8,8 @@
   display: flex;
   flex-direction: column;
   margin-block: 2em;
+  align-items: flex-start;
+  padding: 0 1em;
 }
 
 .book-container img {
@@ -20,7 +22,7 @@
 }
 
 .book-detail p {
-  margin: 0.5em 0;
+  margin: 1em 0;
 }
 
 /* Large Devices (Laptops, Small Desktops) */
@@ -28,7 +30,6 @@
   .book-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 2em;
-    place-items: center;
   }
   .book-container img {
     max-width: 450px;
@@ -43,7 +44,7 @@
 @media (min-width: 1200px) {
   .book-container {
     grid-template-columns: repeat(2, 1fr);
-    place-items: center;
+    place-content: space-around;
   }
   .book-container img {
     max-width: 550px;

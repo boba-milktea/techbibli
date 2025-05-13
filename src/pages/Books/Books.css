@@ -1,9 +1,22 @@
+.book-category-btn {
+  width: fit-content;
+  font-size: 1em;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .book-list {
+  max-width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   justify-items: center;
   gap: 2.15em;
   margin-top: 3.56em;
+}
+
+.book-card {
+  width: 100%;
 }
 
 .book-card a {
@@ -12,7 +25,7 @@
 }
 
 .book-card img {
-  max-width: 100%;
+  width: 90%;
   border-radius: 5px;
 }
 
@@ -20,15 +33,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.2em;
-}
-
-.book-category-btn {
-  width: fit-content;
-  font-size: 1em;
-  background: none;
-  border: none;
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 /* Large Devices (Laptops, Small Desktops) */
