@@ -2,6 +2,22 @@ import React from "react";
 import { collection, addDoc, doc, deleteDoc } from "firebase/firestore";
 import { db, timestamp } from "../../api";
 
+/**
+ * Custom React hook to add a review or remove a reivew from the Firestore collection.
+ *
+ * @param {string} reviewCollection - the name of collection in Firestore
+ *
+ * @returns {{
+ *   addReview:  (review : {username: string, codexId: string, rating: number, comment: string}) => Promise <void>
+ *   removeReview: (id: string) => Promise<void>,
+ *
+ * }} An object containing:
+ * - `addReview`: asynchronously add a review to the specified Firestore collection;
+ *    expect an object with the properties:  `userName`, `codexId`, `rating`, `comment`.
+ * - `removeReview`:asynchronously deletes a review from the collection by its document ID.
+ *
+ */
+
 const commentReducer = (state, action) => {
   switch (action.type) {
     case "IS_PENDING":
@@ -61,7 +77,7 @@ const useAddRemoveReview = (reviewCollection) => {
     }
   };
 
-  return { addReview, deleteReview, response };
+  return { addReview, deleteReview };
 };
 
 export default useAddRemoveReview;

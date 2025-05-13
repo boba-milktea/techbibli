@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import useCollection from "../../hooks/useCollection";
 import useCategoryFilter from "../../hooks/useCategoryFilter";
 import useCollectionData from "../../hooks/useCollectionData";
 import "./Books.css";

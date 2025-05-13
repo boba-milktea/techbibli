@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 const CodexLayout = () => {
@@ -6,7 +5,6 @@ const CodexLayout = () => {
     <>
       <nav>
         <NavLink to=".">Collection</NavLink>
-        <NavLink to="discussion">Discussion</NavLink>
       </nav>
       <Outlet />
     </>

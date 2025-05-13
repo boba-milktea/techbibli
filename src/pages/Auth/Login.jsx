@@ -6,10 +6,15 @@ const Login = () => {
   const location = useLocation();
 
   const { login, isPending, error } = useAuth();
-  const handleSubmit = (formData) => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formEl = event.currentTarget;
+    const formData = new FormData(formEl);
     const email = formData.get("email");
     const password = formData.get("password");
     login(email, password);
+
+    formEl.reset();
   };
 
   return (
@@ -19,7 +24,7 @@ const Login = () => {
         <p className="message">{location.state.message}</p>
       )}
       {error && <p className="error">{error}</p>}
-      <form action={handleSubmit} className="login-form">
+      <form onSubmit={handleSubmit} className="login-form">
         <label htmlFor="email">Email</label>
         <input
           type="email"

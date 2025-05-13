@@ -1,6 +1,5 @@
 {
-  "name": "Scrim-s041bir",
-  "description": "https://scrimba.com/frontend-path-c0j/~0121",
+  "name": "techbibli",
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -10,7 +9,6 @@
   },
   "dependencies": {
     "firebase": "^11.6.0",
-    "miragejs": "^0.1.48",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",

@@ -1,8 +1,21 @@
-import React from "react";
-
 import { useSearchParams } from "react-router-dom";
 import extractCategory from "../utils/extractCategory";
 import normalisation from "../utils/normalisation";
+
+/**
+ * Custom React hook to filter the displayed book by category.
+ *
+ * @param {Array<Object>} books - all the book documents
+ * @returns {{
+ *   displayedBooks:  Array<Object>
+ *   handleFilter: (key: string, value: string || null) => void,
+ *   categories: Array<String>
+ * }} An object containing:
+ * - `displayedBooks`: An array of book objects filtered by the selected category
+ * - `handleFilter`: A function that updates the category filter in the URL; takes a key and a value as the parameter.
+ * - `categories`: A list of unique categories extracted from the books
+ *
+ */
 
 const useCategoryFilter = (books) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -17,7 +30,7 @@ const useCategoryFilter = (books) => {
 
   const categories = extractCategory(books);
 
-  // handle filter query
+  // handle filter query from books and codex
   const handleFilter = (key, value) => {
     setSearchParams((prevParams) => {
       const newParams = new URLSearchParams(prevParams);
@@ -31,7 +44,6 @@ const useCategoryFilter = (books) => {
   };
 
   return {
-    categoryFilter,
     displayedBooks,
     handleFilter,
     categories,

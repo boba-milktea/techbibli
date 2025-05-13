@@ -2,3 +2,32 @@
   width: 100%;
   padding: 1em 0;
 }
+
+.review-card {
+  position: relative;
+  background-color: var(--quaternary-bk);
+  padding: 1em;
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+  font-size: 1.2rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
+.delete-btn:active {
+  transform: translateY(-1);
+}

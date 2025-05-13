@@ -1,4 +1,3 @@
-import React from "react";
 import "./Codex.css";
 import { Link } from "react-router-dom";
 import useCategoryFilter from "../../hooks/useCategoryFilter";

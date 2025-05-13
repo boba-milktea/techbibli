@@ -1,27 +1,28 @@
-import React from "react";
 import { TiStarFullOutline } from "react-icons/ti";
+import "./Rating.css";
 
-// handleClick function is currently broken
-
-const Rating = ({ userRating, handleClick }) => {
+const Rating = ({ userRating, handleClick = null, readOnly = false }) => {
   return (
     <>
       {[...Array(5)].map((_, i) => {
         const value = i + 1;
         return (
-          <label key={i} htmlFor="rating">
+          <label key={i}>
             <TiStarFullOutline
-              className="star"
+              className={`star ${readOnly ? "readonly" : ""}`}
               color={value <= userRating ? "#FFD700" : "lightgray"}
+              style={{ cursor: !readOnly ? "pointer" : "default" }}
             />
 
-            <input
-              type="radio"
-              name="rating"
-              id="rating"
-              value={value}
-              onClick={() => handleClick(value)}
-            />
+            {!readOnly && (
+              <input
+                type="radio"
+                name="rating"
+                id="rating"
+                value={value}
+                onClick={() => handleClick(value)}
+              />
+            )}
           </label>
         );
       })}
