@@ -16,7 +16,7 @@ import CodexDetail from "./src/pages/Codex/CodexDetail";
 import Login from "./src/pages/Auth/Login";
 import Signup from "./src/pages/Auth/Signup";
 import Logout from "./src/pages/Auth/Logout";
-import ResetPW from "./src/pages/Auth/resetPW";
+import ResetPW from "./src/pages/Auth/ResetPW";
 
 function App() {
   return (
