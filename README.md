@@ -98,6 +98,8 @@ const getDocument = async (id) => {
 };
 ```
 
+---
+
 ## Features
 
 - User authentication with Firebase (sign up, login, logout)
@@ -112,11 +114,13 @@ const getDocument = async (id) => {
 
 - Navigation with protected routes (for logged-in users)
 
+- Improve form validation (e.g., password strength)
+
+- Password reset functionality
+
+---
+
 ## To Do
-
-- Improve form validation (e.g., password strength, required fields)
-
-- Add password reset functionality
 
 - Improve mobile responsiveness and accessibility
 
@@ -124,9 +128,13 @@ const getDocument = async (id) => {
 
 - Add ability to add and edit existing book entries
 
+---
+
 ## Project Status
 
 Project is: ✔️ Base project completed
+
+---
 
 ## Contact
 

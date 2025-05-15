@@ -9,8 +9,6 @@ const Login = () => {
   const location = useLocation();
   const { login, isPending, error } = useAuth();
 
-  console.log(error);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const formEl = event.currentTarget;
@@ -49,9 +47,13 @@ const Login = () => {
 
         <button type="submit">{!isPending ? "Log in" : "Submitting..."}</button>
       </form>
-      <div className="sign-up">
-        <p>Need an account?</p>
+      <div className="login-links">
+        <p>Need An Account?</p>
         <Link to="/signup">Sign Up</Link>
+      </div>
+      <div className="login-links">
+        <p>Lost Your Password?</p>
+        <Link to="/resetPW">Reset Password</Link>
       </div>
     </div>
   );

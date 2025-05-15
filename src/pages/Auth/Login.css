@@ -77,8 +77,17 @@
   font-weight: bold;
 }
 
-.login-container .sign-up {
+.login-container .login-links {
   display: flex;
   align-items: center;
-  gap: 0.5em;
+}
+
+.login-container .login-links p {
+  font-weight: bold;
+  margin: 0.5em;
+}
+
+.login-container .login-links a {
+  text-transform: capitalize;
+  padding: 0;
 }
