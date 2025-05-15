@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { auth } from "../../api";
+import { auth } from "../../firebase";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import useAuthContext from "./useAuthContext";
@@ -43,6 +43,9 @@ export const useAuth = () => {
     setIsPending(true);
 
     try {
+      if (userName === "" || email === "" || password === "") {
+        throw new Error("Please complete the form");
+      }
       const res = await createUserWithEmailAndPassword(auth, email, password);
       dispatch({ type: "LOGIN", payload: res.user });
 
@@ -60,7 +63,9 @@ export const useAuth = () => {
       navigate(path, { replace: true });
     } catch (err) {
       console.error(err.message);
-      setError(err.message);
+      setError(
+        err.message.replace("Firebase:", "Show the Message to your IT dept.:")
+      );
       setIsPending(false);
     }
   };
@@ -71,6 +76,9 @@ export const useAuth = () => {
     setIsPending(true);
 
     try {
+      if (email === "" || password === "") {
+        throw new Error("Please complete the form");
+      }
       const res = await signInWithEmailAndPassword(auth, email, password);
       dispatch({ type: "LOGIN", payload: res.user });
       setIsPending(false);
@@ -80,7 +88,11 @@ export const useAuth = () => {
       // clear the page stack using replace prop
       navigate(path, { replace: true });
     } catch (err) {
-      setError(err.message.replace("Firebase:", "Message:"));
+      if (err.code === "auth/invalid-credential") {
+        setError("Invalid email or password. Please try again.");
+      } else {
+        setError(`Show this message to an engineer: ${err.code} `);
+      }
       setIsPending(false);
     }
   };

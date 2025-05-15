@@ -15,8 +15,7 @@ const AuthProtected = () => {
       to="/login"
       replace
       state={{
-        message: `Do you have a account? If so, please log in. 
-          Or feel free to create a new account!`,
+        message: `Wand at the ready? Log in to return.  First time here? Enroll and let the magic begin!`,
         from: location,
       }}
     />

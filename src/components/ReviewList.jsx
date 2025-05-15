@@ -21,7 +21,7 @@ const ReviewList = ({ reviewList }) => {
         </p>
         <p>
           <span className="bold">Rating: </span>
-          <Rating userRating={review.rating} readOnly={true} />
+          <Rating userRating={review.rating} readOnly={true} style={{}}/>
         </p>
         <p>
           <span className="bold">Comment: </span>

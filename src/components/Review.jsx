@@ -6,7 +6,7 @@ import useCollectionData from "../hooks/useCollectionData";
 import useSubscription from "../hooks/useSubscription";
 
 import { collection, query, where, orderBy } from "firebase/firestore";
-import { db } from "../../api";
+import { db } from "../../firebase";
 
 import "./Review.css";
 
@@ -42,6 +42,10 @@ const Review = ({ userName, codexId }) => {
     formEl.reset();
     setRating(null);
   };
+
+  if (loading) return <h1>Loading...</h1>;
+
+  if (error) return <h1>There was an error: {error}</h1>;
 
   return (
     <div className="review">

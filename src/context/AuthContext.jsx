@@ -1,5 +1,5 @@
 import React from "react";
-import { auth } from "../../api";
+import { auth } from "../../firebase";
 
 export const AuthContext = React.createContext();
 

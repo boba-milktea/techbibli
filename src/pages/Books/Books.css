@@ -7,7 +7,7 @@
   cursor: pointer;
 }
 .book-list {
-  max-width: 100%;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
@@ -24,8 +24,14 @@
   text-decoration: none;
 }
 
+.book-card .book-image {
+  width: 450px;
+  height: 600px;
+}
+
 .book-card img {
-  width: 90%;
+  height: 100%;
+  width: 100%;
   border-radius: 5px;
 }
 
@@ -45,6 +51,6 @@
 /* Extra Large Devices (Large Desktops, 4K Screens) */
 @media (min-width: 1200px) {
   .book-list {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }

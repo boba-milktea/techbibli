@@ -6,6 +6,7 @@ const Login = () => {
   const location = useLocation();
 
   const { login, isPending, error } = useAuth();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const formEl = event.currentTarget;
@@ -19,7 +20,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h1>Please Sign in</h1>
+      <h1>Back again? The magic awaits</h1>
       {location.state?.message && (
         <p className="message">{location.state.message}</p>
       )}

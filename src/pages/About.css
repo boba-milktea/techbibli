@@ -28,6 +28,9 @@
 }
 
 .about-page-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: var(--tertiary-bk);
   color: var(--secondary-text);
   padding: 1.5em 2em;

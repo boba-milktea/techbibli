@@ -24,7 +24,9 @@ const Codex = () => {
     return (
       <div key={note.id} className="book-card">
         <Link to={note.id}>
-          <img src={note.imageUrl} alt={note.title} />
+          <div className="book-image">
+            <img src={note.imageUrl} alt={note.title} />
+          </div>
           <div className="book-detail">
             <h3>{note.title}</h3>
             <p>
