@@ -1,0 +1,11 @@
+.reset-message {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1em;
+  background-color: var(--quaternary-bk);
+  margin-bottom: 1em;
+}
+
+.reset-message a {
+  padding: 0.2em;
+}

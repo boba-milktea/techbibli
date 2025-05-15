@@ -16,6 +16,7 @@ import CodexDetail from "./src/pages/Codex/CodexDetail";
 import Login from "./src/pages/Auth/Login";
 import Signup from "./src/pages/Auth/Signup";
 import Logout from "./src/pages/Auth/Logout";
+import ResetPW from "./src/pages/Auth/resetPW";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="logout" element={<Logout />} />
+          <Route path="resetPW" element={<ResetPW />} />
 
           <Route element={<AuthProtected />}>
             <Route path="codex" element={<CodexLayout />}>

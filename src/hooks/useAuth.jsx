@@ -6,6 +6,7 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "../../firebase";
 // react-router-dom
@@ -20,13 +21,15 @@ import useAuthContext from "./useAuthContext";
  *   signup:  (userName: string, email: string, password: string) => Promise<void>,
  *   login: ( email: string, password: string) => Promise<void>,
  *   logout: () Promise<void>,
- *  isPending: Boolean ,
+ *   isPending: Boolean,
+ *   isReset: Boolean,
  *  error: string || null
  * }} An object containing:
  * - `signup`: A asynchronously function that uses firebase createUserWithEmailAndPassword to create a user; takes a username, an email and a password.
  * - `login`: A asynchronously function  that uses firebase signInWithEmailAndPassword to sign a user in; takes an email and a password.
  * - `logout`:A asynchronously function  that uses firebase signOut to sign a user out
  * - `isPending`: Indicates whether an authentication request is in progress.
+ * - `isReset`: Indicates whether the user password is reset.
  * - `error`: an error text if the authentication action falls, or `null` if no error occured.
  *
  */
@@ -34,6 +37,7 @@ import useAuthContext from "./useAuthContext";
 export const useAuth = () => {
   const [error, setError] = React.useState(null);
   const [isPending, setIsPending] = React.useState(false);
+  const [isReset, setIsReset] = React.useState(false);
   const { dispatch } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
@@ -59,8 +63,14 @@ export const useAuth = () => {
 
       navigate(path, { replace: true });
     } catch (err) {
+      console.log(err.code);
       if (err.code === "auth/invalid-credential") {
         setError("Please enter a valid email and password.");
+      } else if (err.code === "auth/password-does-not-meet-requirements") {
+        setError(
+          `Password must be 6+ characters with an uppercase rune, 
+          lowercase glyph, and a number charm.`
+        );
       } else {
         setError(`Show this to someone who is in IT - ${err.code}`);
       }
@@ -96,6 +106,7 @@ export const useAuth = () => {
       setIsPending(false);
     }
   };
+
   // logout using firebase authentication
   const logout = async () => {
     setError(null);
@@ -103,7 +114,6 @@ export const useAuth = () => {
 
     try {
       await signOut(auth);
-
       dispatch({ type: "LOGOUT" });
       setIsPending(false);
     } catch (err) {
@@ -112,5 +122,20 @@ export const useAuth = () => {
     }
   };
 
-  return { login, signup, logout, isPending, error };
+  // Reset Password
+  const resetPassword = async (email) => {
+    setError(null);
+    setIsPending(true);
+
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setIsPending(false);
+      setIsReset(true);
+    } catch (err) {
+      console.error(err);
+      setIsPending(false);
+    }
+  };
+
+  return { login, signup, logout, resetPassword, isPending, error, isReset };
 };
