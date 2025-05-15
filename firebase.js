@@ -8,11 +8,10 @@ import {
   doc,
   Timestamp,
 } from "firebase/firestore";
-import { getDownloadURL, getStorage, ref } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDqpFshlEpZFtKQO3JFYvlc2CrSwsgFTyM",
-  authDomain: "techbibli.firebaseapp.com",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: "techbibli",
   storageBucket: "techbibli.firebasestorage.app",
   messagingSenderId: "199217273055",
@@ -67,32 +66,4 @@ export async function getCodexDetail(id) {
 }
 
 // firebase auth
-
 export { db, auth, timestamp };
-
-//get books download url
-
-//   const handleGetBooks = () => {
-//     const storage = getStorage();
-//     const imageRef = ref(storage, "books/design-patterns.jpg");
-
-//     getDownloadURL(imageRef)
-//       .then((url) => {
-//         console.log(url);
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-//   };
-// export const handleGetCodex = () => {
-//   const storage = getStorage();
-//   const pdfRef = ref(storage, "codex-pdfs/mysql.pdf");
-
-//   getDownloadURL(pdfRef)
-//     .then((url) => {
-//       console.log(url);
-//     })
-//     .catch((err) => console.error(err));
-// };
-
-// handleGetCodex();

@@ -1,4 +1,5 @@
-import { db } from "../../api";
+// firebase
+import { db } from "../../firebase";
 import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 
 /**
@@ -19,6 +20,7 @@ const useCollection = (collect) => {
    *
    * @returns {Promise<Array<Object>>} A promise that resolves to an array of documents. Each document includes its data and a unique `id`.
    */
+
   const getDocuments = async () => {
     const snapshot = await getDocs(collectionRef);
 

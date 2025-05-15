@@ -1,8 +1,12 @@
+// react-router-dom
 import { useParams } from "react-router-dom";
+// components
 import Review from "../../components/Review";
-import "./CodexDetail.css";
+// hooks
 import useAuthContext from "../../hooks/useAuthContext";
 import useCollectionData from "../../hooks/useCollectionData";
+// style
+import "./CodexDetail.css";
 
 const CodexDetail = () => {
   const { user } = useAuthContext();

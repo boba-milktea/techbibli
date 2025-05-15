@@ -1,7 +1,11 @@
-import React from "react";
-import aboutHero from "/assets/about-hero.png";
-import "./About.css";
+// react-router-dom
 import { Link } from "react-router-dom";
+
+// asset
+import aboutHero from "/assets/about-hero.png";
+
+// style
+import "./About.css";
 
 export default function About() {
   return (

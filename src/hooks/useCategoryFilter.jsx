@@ -1,4 +1,6 @@
+// react-router-dom
 import { useSearchParams } from "react-router-dom";
+// util
 import extractCategory from "../utils/extractCategory";
 import normalisation from "../utils/normalisation";
 

@@ -1,7 +1,9 @@
-import React from "react";
+// react-router-dom
 import { Link } from "react-router-dom";
+// hooks
 import useCategoryFilter from "../../hooks/useCategoryFilter";
 import useCollectionData from "../../hooks/useCollectionData";
+// style
 import "./Books.css";
 
 const Books = () => {
@@ -13,7 +15,9 @@ const Books = () => {
     return (
       <div key={book.id} className="book-card">
         <Link to={book.id}>
-          <img src={book.imageUrl} alt={book.title} />
+          <div className="book-image">
+            <img src={book.imageUrl} alt={book.title} />
+          </div>
           <div className="book-detail">
             <h3>{book.title}</h3>
             <p>

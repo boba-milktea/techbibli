@@ -1,8 +1,9 @@
+// react
 import React from "react";
-import "./Signup.css";
+// hooks
 import { useAuth } from "../../hooks/useAuth";
-
-// rewrite the signup form submit!
+// style
+import "./Signup.css";
 
 const Signup = () => {
   const { signup, isPending, error } = useAuth();
@@ -16,7 +17,8 @@ const Signup = () => {
   };
   return (
     <div className="login-container">
-      <h1>Please log in</h1>
+      <h1>Sign up to unlock a world of wonder.</h1>
+      {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit} className="login-form">
         <label htmlFor="user-name">User Name</label>
         <input
@@ -52,8 +54,6 @@ const Signup = () => {
           <button disabled>Loading</button>
         )}
       </form>
-
-      {error && <p>{error}</p>}
     </div>
   );
 };

@@ -1,6 +1,8 @@
+// react
 import React from "react";
+// firebase
 import { collection, addDoc, doc, deleteDoc } from "firebase/firestore";
-import { db, timestamp } from "../../api";
+import { db, timestamp } from "../../firebase";
 
 /**
  * Custom React hook to add a review or remove a reivew from the Firestore collection.
