@@ -1,13 +1,16 @@
+// react
 import React from "react";
+// components
 import Rating from "./Rating";
 import ReviewList from "./ReviewList";
+// hoooks
 import useAddRemoveReview from "../hooks/useAddRemoveReview";
 import useCollectionData from "../hooks/useCollectionData";
 import useSubscription from "../hooks/useSubscription";
-
+// firebase
 import { collection, query, where, orderBy } from "firebase/firestore";
 import { db } from "../../firebase";
-
+// style
 import "./Review.css";
 
 const Review = ({ userName, codexId }) => {

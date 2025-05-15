@@ -1,4 +1,6 @@
+// react
 import React from "react";
+// firebase - auth
 import {
   createUserWithEmailAndPassword,
   updateProfile,
@@ -6,8 +8,9 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../../firebase";
+// react-router-dom
 import { useNavigate, useLocation } from "react-router-dom";
-
+// context
 import useAuthContext from "./useAuthContext";
 
 /**
@@ -43,15 +46,9 @@ export const useAuth = () => {
     setIsPending(true);
 
     try {
-      if (userName === "" || email === "" || password === "") {
-        throw new Error("Please complete the form");
-      }
       const res = await createUserWithEmailAndPassword(auth, email, password);
       dispatch({ type: "LOGIN", payload: res.user });
 
-      if (!res) {
-        throw new Error("could not complete signup");
-      }
       // add user name as displayName to the newly created user
       await updateProfile(auth.currentUser, { displayName: userName });
       setIsPending(false);
@@ -62,10 +59,11 @@ export const useAuth = () => {
 
       navigate(path, { replace: true });
     } catch (err) {
-      console.error(err.message);
-      setError(
-        err.message.replace("Firebase:", "Show the Message to your IT dept.:")
-      );
+      if (err.code === "auth/invalid-credential") {
+        setError("Please enter a valid email and password.");
+      } else {
+        setError(`Show this to someone who is in IT - ${err.code}`);
+      }
       setIsPending(false);
     }
   };
@@ -76,9 +74,6 @@ export const useAuth = () => {
     setIsPending(true);
 
     try {
-      if (email === "" || password === "") {
-        throw new Error("Please complete the form");
-      }
       const res = await signInWithEmailAndPassword(auth, email, password);
       dispatch({ type: "LOGIN", payload: res.user });
       setIsPending(false);
@@ -88,10 +83,15 @@ export const useAuth = () => {
       // clear the page stack using replace prop
       navigate(path, { replace: true });
     } catch (err) {
+      console.log(err.code);
       if (err.code === "auth/invalid-credential") {
         setError("Invalid email or password. Please try again.");
+      } else if (err.code === "auth/invalid-email") {
+        setError("Invalid email. Please try again.");
+      } else if (err.code === "auth/missing-password") {
+        setError("Missing password. Please try again.");
       } else {
-        setError(`Show this message to an engineer: ${err.code} `);
+        setError(`Show this to someone who is in IT - ${err.code}`);
       }
       setIsPending(false);
     }
@@ -107,7 +107,7 @@ export const useAuth = () => {
       dispatch({ type: "LOGOUT" });
       setIsPending(false);
     } catch (err) {
-      setError(err.message.replace("Firebase:", "Message:"));
+      setError(`Show this to someone who is in IT - ${err.code}`);
       setIsPending(false);
     }
   };

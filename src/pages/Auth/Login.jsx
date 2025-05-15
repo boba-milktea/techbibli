@@ -1,11 +1,15 @@
-import "./Login.css";
+// react-router-dom
 import { Link, useLocation } from "react-router-dom";
+// hooks
 import { useAuth } from "../../hooks/useAuth";
+// style
+import "./Login.css";
 
 const Login = () => {
   const location = useLocation();
-
   const { login, isPending, error } = useAuth();
+
+  console.log(error);
 
   const handleSubmit = (event) => {
     event.preventDefault();

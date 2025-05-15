@@ -1,8 +1,10 @@
-import React from "react";
+// react-router-dom
 import { Link, NavLink } from "react-router-dom";
-import "./Header.css";
+// hoooks
 import useAuthContext from "../hooks/useAuthContext";
 import { useAuth } from "../hooks/useAuth";
+// style
+import "./Header.css";
 
 const Header = () => {
   const { logout } = useAuth();

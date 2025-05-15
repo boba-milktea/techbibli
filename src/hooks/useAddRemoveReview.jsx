@@ -1,4 +1,6 @@
+// react
 import React from "react";
+// firebase
 import { collection, addDoc, doc, deleteDoc } from "firebase/firestore";
 import { db, timestamp } from "../../firebase";
 

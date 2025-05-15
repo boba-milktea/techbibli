@@ -1,5 +1,6 @@
-import "./Codex.css";
+// react-router-dom
 import { Link } from "react-router-dom";
+// hooks
 import useCategoryFilter from "../../hooks/useCategoryFilter";
 import useCollectionData from "../../hooks/useCollectionData";
 

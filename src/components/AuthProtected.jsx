@@ -15,7 +15,7 @@ const AuthProtected = () => {
       to="/login"
       replace
       state={{
-        message: `Wand at the ready? Log in to return.  First time here? Enroll and let the magic begin!`,
+        message: `Wand at the ready? Log in to return. First time here? Enroll and let the magic begin!`,
         from: location,
       }}
     />

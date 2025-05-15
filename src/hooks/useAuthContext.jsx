@@ -1,4 +1,6 @@
+// react
 import React from "react";
+// context
 import { AuthContext } from "../context/AuthContext";
 
 /**

@@ -1,7 +1,11 @@
+// hooks
 import useAddRemoveReview from "../hooks/useAddRemoveReview";
 import useAuthContext from "../hooks/useAuthContext";
+// components
 import Rating from "./Rating";
+// react-icons
 import { MdOutlineDeleteForever } from "react-icons/md";
+// style
 import "./ReviewList.css";
 
 const ReviewList = ({ reviewList }) => {
@@ -21,7 +25,7 @@ const ReviewList = ({ reviewList }) => {
         </p>
         <p>
           <span className="bold">Rating: </span>
-          <Rating userRating={review.rating} readOnly={true} style={{}}/>
+          <Rating userRating={review.rating} readOnly={true} style={{}} />
         </p>
         <p>
           <span className="bold">Comment: </span>

@@ -1,4 +1,6 @@
+// react-icons
 import { TiStarFullOutline } from "react-icons/ti";
+// style
 import "./Rating.css";
 
 const Rating = ({ userRating, handleClick = null, readOnly = false }) => {

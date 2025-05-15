@@ -1,7 +1,9 @@
-import React from "react";
+// react-router-dom
 import { useParams } from "react-router-dom";
-import "./BookDetail.css";
+// hooks
 import useCollectionData from "../../hooks/useCollectionData";
+// style
+import "./BookDetail.css";
 
 const BookDetail = () => {
   const { id } = useParams();

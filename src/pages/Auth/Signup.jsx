@@ -1,6 +1,9 @@
+// react
 import React from "react";
-import "./Signup.css";
+// hooks
 import { useAuth } from "../../hooks/useAuth";
+// style
+import "./Signup.css";
 
 const Signup = () => {
   const { signup, isPending, error } = useAuth();
